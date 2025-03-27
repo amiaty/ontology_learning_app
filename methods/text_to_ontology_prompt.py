@@ -41,8 +41,40 @@ def create_ontology_from_description(description: str, model="gpt-4o") -> str:
     """
     import openai
     import os
-    import json
-    import re
+    
+    # Get API key from environment
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OpenAI API key is required. Set it in the environment variable OPENAI_API_KEY.")
+    openai.api_key = api_key
+    client = openai.OpenAI(api_key=api_key)
+
+    # Create the prompt using the description
+    prompt = text_to_llm_prompt(description)
+
+    # Request response from GPT model
+    response = client.chat.completions.create(
+        model=model,
+        temperature=0,
+        messages=prompt,
+    )
+    llm_output = response.choices[0].message.content
+    
+    return llm_output
+
+def create_ontology_from_description2(description: str, model="gpt-4o") -> str:
+    """
+    Generate an ontology from text using LLM.
+    
+    Args:
+        text: The text content to process
+        model: The OpenAI model to use (gpt4, gpt4omini)
+        
+    Returns:
+        TTL formatted ontology as string
+    """
+    import openai
+    import os
     
     # Get API key from environment
     api_key = os.environ.get("OPENAI_API_KEY")
@@ -77,7 +109,6 @@ def generate_ontology_from_text(text, model="gpt4"):
     """
     import openai
     import os
-    import json
     import re
     
     # Get API key from environment
