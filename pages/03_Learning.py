@@ -8,7 +8,7 @@ from methods.text_to_ontology_prompt import generate_ontology_from_text, create_
 from utils import load_text_file, save_ontology
 
 st.set_page_config(page_title="Learn Ontology", page_icon="🧠")
-st.title("Ontology Learning from Text")
+st.title("🧠 **Ontology Learning from Text**")
 
 # Example of accessing settings in another page
 api_key = st.session_state.api_key

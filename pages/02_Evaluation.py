@@ -3,9 +3,9 @@ import streamlit as st
 from methods.metrics import load_and_normalize, conciseness, completeness, correctness
 
 # Application UI
-st.set_page_config(page_title="Ontology Metrics Evaluation", layout="centered", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Ontology Metrics Evaluation", layout="centered", initial_sidebar_state="expanded", page_icon="📊")
 
-st.title("📊 **Ontology Metrics Evaluation Tool**")
+st.title("📊 **Ontology Evaluation Tool**")
 st.write(
     "Evaluate your learned ontology against the ground truth using metrics such as **Conciseness**, "
     "**Completeness**, and **Correctness**. Upload your ontologies below to get started!"

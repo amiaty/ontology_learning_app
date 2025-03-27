@@ -2,7 +2,7 @@
 import streamlit as st
 
 st.set_page_config(page_title="Settings", page_icon="⚙️")
-st.title("Settings")
+st.title("⚙️ **Settings**")
 
 # Initialize session state variables if they don't exist
 if 'api_key' not in st.session_state:
