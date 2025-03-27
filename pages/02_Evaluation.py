@@ -3,21 +3,21 @@ import streamlit as st
 from methods.metrics import load_and_normalize, conciseness, completeness, correctness
 
 # Application UI
-st.set_page_config(page_title="Ontology Metrics Evaluation", layout="centered", initial_sidebar_state="expanded", page_icon="📊")
+st.set_page_config(page_title="Ontology Metrics Evaluation", layout="centered", initial_sidebar_state="collapsed", page_icon="📊")
 
-st.title("📊 **Ontology Evaluation Tool**")
+#st.title("📊 **Ontology Evaluation Tool**")
 st.write(
     "Evaluate your learned ontology against the ground truth using metrics such as **Conciseness**, "
     "**Completeness**, and **Correctness**. Upload your ontologies below to get started!"
 )
 
 # File Upload Section
-st.sidebar.header("Upload Ontologies")
-uploaded_learned_file = st.sidebar.file_uploader("Upload Learned Ontology (Turtle Format)", type="ttl")
-uploaded_gt_file = st.sidebar.file_uploader("Upload Ground Truth Ontology (Turtle Format)", type="ttl")
+st.header("Upload Ontologies")
+uploaded_learned_file = st.file_uploader("Upload Learned Ontology (Turtle Format)", type="ttl")
+uploaded_gt_file = st.file_uploader("Upload Ground Truth Ontology (Turtle Format)", type="ttl")
 
 if uploaded_learned_file and uploaded_gt_file:
-    st.sidebar.success("✅ Both files uploaded successfully!")
+    st.success("✅ Both files uploaded successfully!")
     with st.spinner("🎛️ Processing ontologies and calculating metrics..."):
         # Load and normalize ontologies
         learned_triples = load_and_normalize(uploaded_learned_file)
